@@ -1,0 +1,5 @@
+#!/bin/bash
+echo "power on" | bluetoothctl 
+devices=$(bluetoothctl -- "devices")
+choice=$( echo "$devices" | grep "Device" | cut -d " " -f 3- | dmenu)
+echo "$devices" | grep "$choice" | awk ' { print "disconnect\nconnect "$2 } ' | bluetoothctl

@@ -1,0 +1,5 @@
+#!/bin/sh
+
+if [ ! $(xbacklight -get) == "10" ]; then
+  xbacklight $1
+fi

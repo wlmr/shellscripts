@@ -1,0 +1,14 @@
+#!/bin/bash
+percentage=$(acpi | awk -F", " '{print $2}' | sed 's/%//')
+col='\x01'
+if [ $percentage -le 20 ]
+then
+  col='\x04'
+elif [ $percentage -le 50 ]
+then
+  col='\x03'
+else 
+  col='\x01'
+fi
+acpi | awk -v col="$col" -F", " '{ print ($1 ~ /Discharging$/ ? col "🔋" : "🔌") $2 "\x01" }'
+

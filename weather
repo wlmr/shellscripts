@@ -1,0 +1,3 @@
+curl 'wttr.in/Solvesborg?format=%l:+%c+%t+%w+%p'
+
+
